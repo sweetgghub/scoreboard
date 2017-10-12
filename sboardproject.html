@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sboard</title>
+	<!-- <link rel="stylesheet" type="text/css" href="sboard.css"> -->
+	<style type="text/css">
+		
+		.disColor{
+
+		color:green;
+	}
+
+
+	</style>
+</head>
+<body>
+	<h1><span id="display1">0</span> to <span id="display2">0</span></h1>
+	<p>Playing to: <span>5</span></p>
+	<input type="number" name="">
+	<button id="p1">Player One</button>
+	<button id="p2">Player Two</button>
+	<button id="reset">Reset</button>
+	<script type="text/javascript">
+		
+	var p1 = document.querySelector("#p1");
+	var p2 = document.querySelector("#p2");
+	var display1 = document.querySelector("#display1");
+	var display2 = document.querySelector("#display2");
+	var pMaxNum = document.querySelector("p span");
+	var inputNum = document.querySelector("input");
+	var reset = document.querySelector("#reset");
+
+	var d1 = 0;
+	var d2 = 0;
+
+	var maxNum = 5;
+	var gameOver = false;
+
+	reset.addEventListener("click", function(){
+
+	resetAll();
+
+	})
+
+	function resetAll(){
+
+		display1.textContent = 0;
+		display2.textContent = 0;
+		display1.classList.remove("disColor");
+		display2.classList.remove("disColor");
+		d1 = 0;
+		d2 = 0;
+		gameOver = false;
+	}
+
+
+
+	p1.addEventListener("click", function(){
+		if(!gameOver){
+			d1++;
+			if(d1 <maxNum){
+			
+				display1.textContent = d1;
+			}
+			if(d1 == maxNum){
+				display1.textContent = d1;
+				gameOver = true;
+				console.log(gameOver);
+				display1.classList.add("disColor");
+
+			}
+		}
+	})
+
+
+	p2.addEventListener("click", function(){
+
+		if(!gameOver){
+		d2++;
+			if(d2 <maxNum){
+			
+				display2.textContent = d2;
+			}
+			if(d2 == maxNum){
+				display2.textContent = d2;
+				gameOver = true;
+				display2.classList.add("disColor");
+				console.log(gameOver);
+			}
+		}
+		
+	})
+
+	inputNum.addEventListener("change", function(){
+
+		pMaxNum.textContent = inputNum.value;
+		maxNum = inputNum.value;
+	})
+
+
+	</script>
+</body>
+</html>
